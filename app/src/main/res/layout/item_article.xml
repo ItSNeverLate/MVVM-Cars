@@ -1,36 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_container"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="8dp">
-
-    <CheckBox
-        android:id="@+id/check_box_completed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:minWidth="0dp"
-        android:minHeight="0dp" />
-
-    <TextView
-        android:id="@+id/text_view_name"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:layout_toEndOf="@id/check_box_completed"
-        android:layout_toStartOf="@id/label_important"
-        android:layout_alignBottom="@id/check_box_completed"
-        android:layout_alignTop="@id/check_box_completed"
-        android:gravity="center_vertical"
-        tools:text="Sample task's name. Can you see it? Yes or Not! If you don't see, please click it." />
+    android:background="@color/grey"
+    android:layout_height="399dp">
 
     <ImageView
-        android:id="@+id/label_important"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        />
-</RelativeLayout>
+        android:id="@+id/image_view_logo"
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@mipmap/ic_launcher" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="70dp"
+        android:layout_alignBottom="@id/layout_container"
+        android:background="@drawable/bg_gradient"
+        android:paddingHorizontal="16dp"
+        android:orientation="vertical"
+        android:gravity="bottom"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/text_view_title"
+            style="@style/Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="7dp"
+            tools:text="A7 - Four rings. A clear line." />
+
+        <TextView
+            android:id="@+id/text_view_date"
+            style="@style/Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="15dp"
+            tools:text="29 November 2017, 15:09" />
+
+        <TextView
+            android:id="@+id/text_view_description"
+            style="@style/Description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:lineSpacingExtra="6sp"
+            android:layout_marginBottom="24dp"
+            tools:text="Distinctive, unmistakable, A7. " />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

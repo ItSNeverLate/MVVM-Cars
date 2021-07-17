@@ -1,12 +1,14 @@
 package com.sevenpeakssoftware.mehdi.data.remote
 
-import com.sevenpeakssoftware.mehdi.data.remote.dto.ArticleDto
-import com.sevenpeakssoftware.mehdi.domain.model.Article
-import retrofit2.Response
+import com.sevenpeakssoftware.mehdi.data.remote.dto.ArticleResponse
 import retrofit2.http.GET
 
 interface AppService {
 
-    @GET("/users")
-    suspend fun getArticles(): Response<List<Article>>
+    companion object {
+        const val BASE_URL = "https://www.apphusetreach.no/application/119267/"
+    }
+
+    @GET("article/get_articles_list")
+    suspend fun getArticles(): ArticleResponse
 }

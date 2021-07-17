@@ -1,6 +1,11 @@
 package com.sevenpeakssoftware.mehdi.domain.model
 
+import androidx.room.Entity
+import androidx.room.PrimaryKey
+
+@Entity(tableName = "articles")
 data class Article(
+    @PrimaryKey
     val id: Long,
     val title: String,
     val dateTime: String,

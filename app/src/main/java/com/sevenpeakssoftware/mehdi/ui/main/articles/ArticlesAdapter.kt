@@ -5,53 +5,47 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.sevenpeakssoftware.mehdi.data.local.entity.ArticleEntity
+import com.bumptech.glide.Glide
 import com.sevenpeakssoftware.mehdi.databinding.ItemArticleBinding
+import com.sevenpeakssoftware.mehdi.domain.model.Article
 
-class ArticlesAdapter(val listener: OnClickListener) :
-    ListAdapter<ArticleEntity, ArticlesAdapter.ViewHolder>(DiffCallback()) {
+class ArticlesAdapter :
+    ListAdapter<Article, ArticlesAdapter.ArticleViewHolder>(ArticleComparator()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = ItemArticleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return ViewHolder(binding)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArticleViewHolder {
+        val binding: ItemArticleBinding =
+            ItemArticleBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return ArticleViewHolder(binding)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val article = getItem(position)
-        holder.bind(article)
+    override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
+        val currentItem = getItem(position)
+        if (currentItem != null) {
+            holder.bind(currentItem)
+        }
     }
 
-    inner class ViewHolder(private val binding: ItemArticleBinding) :
+    class ArticleViewHolder(private val binding: ItemArticleBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        init {
+        fun bind(Article: Article) {
             binding.apply {
-                root.setOnClickListener {
-                    val position = adapterPosition
-                    if (position != RecyclerView.NO_POSITION) {
-                        val task = getItem(position)
-                        listener.onItemClick(task)
-                    }
-                }
-            }
-        }
+                Glide.with(itemView)
+                    .load(Article.image)
+                    .into(imageViewLogo)
 
-        fun bind(article: ArticleEntity) {
-            binding.apply {
-                textViewName.text = article.title
+                textViewTitle.text = Article.title
+                textViewDate.text = Article.dateTime
+                textViewDescription.text = Article.ingress
             }
         }
     }
 
-    interface OnClickListener {
-        fun onItemClick(article: ArticleEntity)
-    }
-
-    class DiffCallback : DiffUtil.ItemCallback<ArticleEntity>() {
-        override fun areItemsTheSame(oldItem: ArticleEntity, newItem: ArticleEntity) =
+    class ArticleComparator : DiffUtil.ItemCallback<Article>() {
+        override fun areItemsTheSame(oldItem: Article, newItem: Article) =
             oldItem.id == newItem.id
 
-        override fun areContentsTheSame(oldItem: ArticleEntity, newItem: ArticleEntity) =
+        override fun areContentsTheSame(oldItem: Article, newItem: Article) =
             oldItem == newItem
     }
 }
