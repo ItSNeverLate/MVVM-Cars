@@ -1,7 +1,6 @@
 package com.sevenpeakssoftware.mehdi.data.local.mapper
 
 import com.sevenpeakssoftware.mehdi.data.local.entity.ArticleEntity
-import com.sevenpeakssoftware.mehdi.data.remote.mapper.ItemDtoMapper
 import com.sevenpeakssoftware.mehdi.domain.model.Article
 import com.sevenpeakssoftware.mehdi.domain.util.Mapper
 

@@ -3,16 +3,16 @@ package com.sevenpeakssoftware.mehdi.data.repository
 import androidx.room.withTransaction
 import com.sevenpeakssoftware.mehdi.data.local.AppDatabase
 import com.sevenpeakssoftware.mehdi.data.remote.AppService
+import com.sevenpeakssoftware.mehdi.domain.repository.ArticleRepository
 import com.sevenpeakssoftware.mehdi.util.networkBoundResource
-import javax.inject.Inject
 
-class ArticleRepository @Inject constructor(
+class ArticleRepositoryImp constructor(
     private val service: AppService,
-    private val db: AppDatabase
-) {
+    private val db: AppDatabase,
+) : ArticleRepository {
     private val articleDao = db.articleDao()
 
-    fun getArticles() = networkBoundResource(
+    override fun getArticles() = networkBoundResource(
         query = {
             articleDao.getAllArticles()
         },
