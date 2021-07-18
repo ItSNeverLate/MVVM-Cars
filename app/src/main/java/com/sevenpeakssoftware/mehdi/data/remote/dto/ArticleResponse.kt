@@ -1,9 +1,7 @@
 package com.sevenpeakssoftware.mehdi.data.remote.dto
 
-import com.sevenpeakssoftware.mehdi.domain.model.Article
-
 data class ArticleResponse(
-    val content: List<Article>,
+    val content: List<ArticleDto>,
     val serverTime: Int,
-    val status: String
+    val status: String,
 )

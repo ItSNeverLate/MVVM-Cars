@@ -11,8 +11,7 @@ data class ArticleEntity(
     val dateTime: String,
     val image: String,
     val ingress: String,
-//    val tags: List<String>,
-//    val content: List<ItemEntity>,
+    val tags: List<String>,
     val created: Long,
     val changed: Long,
 )

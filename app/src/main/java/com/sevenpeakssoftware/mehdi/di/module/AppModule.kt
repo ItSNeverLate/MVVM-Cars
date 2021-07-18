@@ -2,7 +2,9 @@ package com.sevenpeakssoftware.mehdi.di.module
 
 import android.app.Application
 import androidx.room.Room
+import com.google.gson.Gson
 import com.sevenpeakssoftware.mehdi.data.local.AppDatabase
+import com.sevenpeakssoftware.mehdi.data.local.AppDatabase.Companion.DB_NAME
 import com.sevenpeakssoftware.mehdi.data.remote.AppService
 import dagger.Module
 import dagger.Provides
@@ -32,6 +34,6 @@ object AppModule {
     @Provides
     @Singleton
     fun provideDatabase(app: Application): AppDatabase =
-        Room.databaseBuilder(app, AppDatabase::class.java, "app_database")
+        Room.databaseBuilder(app, AppDatabase::class.java, DB_NAME)
             .build()
 }

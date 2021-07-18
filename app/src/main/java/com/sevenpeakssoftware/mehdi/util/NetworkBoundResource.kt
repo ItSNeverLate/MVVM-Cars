@@ -15,11 +15,13 @@ inline fun <ResultType, RequestType> networkBoundResource(
 
         try {
             saveFetchResult(fetch())
+            // Fresh data from DB
             query().map { Resource.Success(it) }
         } catch (throwable: Throwable) {
             query().map { Resource.Error(throwable, it) }
         }
     } else {
+        // Old data from DB
         query().map { Resource.Success(it) }
     }
 

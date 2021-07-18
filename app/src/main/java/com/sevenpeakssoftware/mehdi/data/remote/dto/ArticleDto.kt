@@ -6,8 +6,8 @@ data class ArticleDto(
     val dateTime: String,
     val image: String,
     val ingress: String,
-//    val tags: List<String>,
-//    val content: List<ItemDto>,
+    val tags: List<String>,
+    val content: List<ItemDto>,
     val created: Long,
     val changed: Long,
 )
