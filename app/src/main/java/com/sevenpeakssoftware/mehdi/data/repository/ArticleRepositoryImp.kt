@@ -32,8 +32,8 @@ class ArticleRepositoryImp constructor(
                 val articlesItems = ArticleEntityMapper.fromModelList(articles)
                 for (articleItem in articlesItems) {
                     articleDao.insertArticle(articleItem.article)
-                    for(item in articleItem.items)
-                    itemDao.insertItem(item.copy(articleId = articleItem.article.id))
+                    for (item in articleItem.items)
+                        itemDao.insertItem(item.copy(articleId = articleItem.article.id))
                 }
             }
         }

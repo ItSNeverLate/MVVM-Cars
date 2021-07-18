@@ -10,6 +10,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <!--this is makes changes to the entire snackbar-->
+        <item name="snackbarStyle">@style/SnackBar</item>
     </style>
 </resources>
