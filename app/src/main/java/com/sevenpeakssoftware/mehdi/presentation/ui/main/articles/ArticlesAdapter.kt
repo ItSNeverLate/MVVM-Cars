@@ -1,4 +1,4 @@
-package com.sevenpeakssoftware.mehdi.ui.main.articles
+package com.sevenpeakssoftware.mehdi.presentation.ui.main.articles
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.sevenpeakssoftware.mehdi.databinding.ItemArticleBinding
 import com.sevenpeakssoftware.mehdi.domain.model.Article
+import com.sevenpeakssoftware.mehdi.presentation.util.DateTimeUtils
 
 class ArticlesAdapter :
     ListAdapter<Article, ArticlesAdapter.ArticleViewHolder>(ArticleComparator()) {
@@ -35,7 +36,7 @@ class ArticlesAdapter :
                     .into(imageViewLogo)
 
                 textViewTitle.text = Article.title
-                textViewDate.text = Article.dateTime
+                textViewDate.text = DateTimeUtils.getFormattedDateTime(Article.dateTime)
                 textViewDescription.text = Article.ingress
             }
         }

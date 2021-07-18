@@ -1,4 +1,4 @@
-package com.sevenpeakssoftware.mehdi.ui.main.articles
+package com.sevenpeakssoftware.mehdi.presentation.ui.main.articles
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.asLiveData
