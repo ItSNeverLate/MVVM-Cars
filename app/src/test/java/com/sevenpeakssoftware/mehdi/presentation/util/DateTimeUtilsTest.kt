@@ -7,7 +7,7 @@ import java.util.*
 class DateTimeUtilsTest {
 
     @Test
-    fun `Date in the current year_returns formatted date without year`() {
+    fun `date in the current year_returns formatted date without year`() {
         val currentYear = Calendar.getInstance().get(Calendar.YEAR)
         val result = DateTimeUtils.getFormattedDateTime("29.11.${currentYear} 15:12")
         assertThat(result)
@@ -15,7 +15,7 @@ class DateTimeUtilsTest {
     }
 
     @Test
-    fun `Date in the other years_returns formatted date with year`() {
+    fun `date in the other years_returns formatted date with year`() {
         val currentYear = Calendar.getInstance().get(Calendar.YEAR) - 1
         val result = DateTimeUtils.getFormattedDateTime("29.11.${currentYear} 15:12")
         assertThat(result)
