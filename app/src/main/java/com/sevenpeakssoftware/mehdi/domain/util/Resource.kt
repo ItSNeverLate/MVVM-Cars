@@ -1,4 +1,4 @@
-package com.sevenpeakssoftware.mehdi.util
+package com.sevenpeakssoftware.mehdi.domain.util
 
 sealed class Resource<T>(
     val data: T? = null,

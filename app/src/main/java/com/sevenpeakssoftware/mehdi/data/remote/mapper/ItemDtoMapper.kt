@@ -4,24 +4,25 @@ import com.sevenpeakssoftware.mehdi.data.remote.dto.ItemDto
 import com.sevenpeakssoftware.mehdi.domain.model.Item
 import com.sevenpeakssoftware.mehdi.domain.util.Mapper
 
+@Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
 object ItemDtoMapper : Mapper<ItemDto, Item> {
 
-    override suspend fun toModel(itemDto: ItemDto) = Item(
+    override fun toModel(itemDto: ItemDto) = Item(
         description = itemDto.description,
         subject = itemDto.subject,
         type = itemDto.type
     )
 
-    override suspend fun fromModel(item: Item) =
+    override fun fromModel(item: Item) =
         ItemDto(
             description = item.description,
             subject = item.subject,
             type = item.type
         )
 
-    override suspend fun fromModelList(list: List<Item>): List<ItemDto> =
+    override fun fromModelList(list: List<Item>): List<ItemDto> =
         list.map { fromModel(it) }
 
-    override suspend fun toModelList(list: List<ItemDto>): List<Item> =
+    override fun toModelList(list: List<ItemDto>): List<Item> =
         list.map { toModel(it) }
 }

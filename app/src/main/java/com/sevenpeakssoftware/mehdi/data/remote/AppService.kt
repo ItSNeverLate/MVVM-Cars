@@ -1,6 +1,6 @@
 package com.sevenpeakssoftware.mehdi.data.remote
 
-import com.sevenpeakssoftware.mehdi.data.remote.dto.ArticleResponse
+import com.sevenpeakssoftware.mehdi.data.remote.response.ArticleResponse
 import retrofit2.http.GET
 
 interface AppService {

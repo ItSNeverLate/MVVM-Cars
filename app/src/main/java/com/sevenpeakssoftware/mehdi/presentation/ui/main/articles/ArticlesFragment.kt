@@ -1,6 +1,5 @@
 package com.sevenpeakssoftware.mehdi.presentation.ui.main.articles
 
-import android.graphics.Color
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.isVisible
@@ -10,9 +9,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.snackbar.Snackbar
 import com.sevenpeakssoftware.mehdi.R
 import com.sevenpeakssoftware.mehdi.databinding.FragmentArticlesBinding
-import com.sevenpeakssoftware.mehdi.util.Resource
+import com.sevenpeakssoftware.mehdi.domain.util.Resource
 import dagger.hilt.android.AndroidEntryPoint
-
 
 @AndroidEntryPoint
 class ArticlesFragment : Fragment(R.layout.fragment_articles) {
@@ -51,8 +49,8 @@ class ArticlesFragment : Fragment(R.layout.fragment_articles) {
                 progressBar.isVisible = result is Resource.Loading && result.data.isNullOrEmpty()
 
                 if (result is Resource.Error && result.data.isNullOrEmpty()) {
-                    result.error?.let { error ->
-                        Snackbar.make(binding.root, error.localizedMessage, Snackbar.LENGTH_LONG)
+                    result.error?.localizedMessage?.let { message ->
+                        Snackbar.make(binding.root, message, Snackbar.LENGTH_LONG)
                             .show()
                     }
                 }

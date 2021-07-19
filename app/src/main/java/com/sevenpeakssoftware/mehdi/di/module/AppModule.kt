@@ -2,7 +2,6 @@ package com.sevenpeakssoftware.mehdi.di.module
 
 import android.app.Application
 import androidx.room.Room
-import com.google.gson.Gson
 import com.sevenpeakssoftware.mehdi.data.local.AppDatabase
 import com.sevenpeakssoftware.mehdi.data.local.AppDatabase.Companion.DB_NAME
 import com.sevenpeakssoftware.mehdi.data.remote.AppService

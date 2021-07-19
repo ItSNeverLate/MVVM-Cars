@@ -29,15 +29,15 @@ class ArticlesAdapter :
     class ArticleViewHolder(private val binding: ItemArticleBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(Article: Article) {
+        fun bind(article: Article) {
             binding.apply {
                 Glide.with(itemView)
-                    .load(Article.image)
+                    .load(article.image)
                     .into(imageViewLogo)
 
-                textViewTitle.text = Article.title
-                textViewDate.text = DateTimeUtils.getFormattedDateTime(Article.dateTime)
-                textViewDescription.text = Article.ingress
+                textViewTitle.text = article.title
+                textViewDate.text = DateTimeUtils.getFormattedDateTime(article.dateTime)
+                textViewDescription.text = article.ingress
             }
         }
     }

@@ -2,11 +2,11 @@ package com.sevenpeakssoftware.mehdi.domain.util
 
 interface Mapper<T, Model> {
 
-    suspend fun fromModel(model: Model): T
+    fun fromModel(model: Model): T
 
-    suspend fun toModel(t: T): Model
+    fun toModel(t: T): Model
 
-    suspend fun fromModelList(list: List<Model>): List<T>
+    fun fromModelList(list: List<Model>): List<T>
 
-    suspend fun toModelList(list: List<T>): List<Model>
+    fun toModelList(list: List<T>): List<Model>
 }

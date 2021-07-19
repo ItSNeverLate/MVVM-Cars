@@ -4,9 +4,10 @@ import com.sevenpeakssoftware.mehdi.data.remote.dto.ArticleDto
 import com.sevenpeakssoftware.mehdi.domain.model.Article
 import com.sevenpeakssoftware.mehdi.domain.util.Mapper
 
+@Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
 object ArticleDtoMapper : Mapper<ArticleDto, Article> {
 
-    override suspend fun toModel(articleDto: ArticleDto) = Article(
+    override fun toModel(articleDto: ArticleDto) = Article(
         id = articleDto.id,
         title = articleDto.title,
         dateTime = articleDto.dateTime,
@@ -20,7 +21,7 @@ object ArticleDtoMapper : Mapper<ArticleDto, Article> {
         changed = articleDto.changed,
     )
 
-    override suspend fun fromModel(model: Article) =
+    override fun fromModel(model: Article) =
         ArticleDto(
             id = model.id,
             title = model.title,
@@ -35,9 +36,9 @@ object ArticleDtoMapper : Mapper<ArticleDto, Article> {
             changed = model.changed,
         )
 
-    override suspend fun fromModelList(list: List<Article>): List<ArticleDto> =
+    override fun fromModelList(list: List<Article>): List<ArticleDto> =
         list.map { fromModel(it) }
 
-    override suspend fun toModelList(list: List<ArticleDto>): List<Article> =
+    override fun toModelList(list: List<ArticleDto>): List<Article> =
         list.map { toModel(it) }
 }

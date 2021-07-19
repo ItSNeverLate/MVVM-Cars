@@ -1,5 +1,6 @@
 package com.sevenpeakssoftware.mehdi.util
 
+import com.sevenpeakssoftware.mehdi.domain.util.Resource
 import kotlinx.coroutines.flow.*
 
 inline fun <ResultType, RequestType> networkBoundResource(

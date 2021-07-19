@@ -14,7 +14,6 @@ class ArticleRepositoryImp constructor(
     private val db: AppDatabase,
 ) : ArticleRepository {
     private val articleDao = db.articleDao()
-    private val itemDao = db.itemDao()
 
     override fun getArticles() = networkBoundResource(
         query = {
@@ -29,11 +28,9 @@ class ArticleRepositoryImp constructor(
             db.withTransaction {
                 articleDao.deleteAllArticles()
                 val articles = ArticleDtoMapper.toModelList(result.content)
-                val articlesItems = ArticleEntityMapper.fromModelList(articles)
-                for (articleItem in articlesItems) {
-                    articleDao.insertArticle(articleItem.article)
-                    for (item in articleItem.items)
-                        itemDao.insertItem(item.copy(articleId = articleItem.article.id))
+                val entities = ArticleEntityMapper.fromModelList(articles)
+                for (entity in entities) {
+                    articleDao.insert(entity.article, entity.items)
                 }
             }
         }

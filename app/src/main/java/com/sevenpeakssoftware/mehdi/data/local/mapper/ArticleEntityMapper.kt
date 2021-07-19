@@ -5,9 +5,10 @@ import com.sevenpeakssoftware.mehdi.data.local.entity.relation.ArticleWithItems
 import com.sevenpeakssoftware.mehdi.domain.model.Article
 import com.sevenpeakssoftware.mehdi.domain.util.Mapper
 
+@Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
 object ArticleEntityMapper : Mapper<ArticleWithItems, Article> {
 
-    override suspend fun toModel(articleWithEntity: ArticleWithItems) = Article(
+    override fun toModel(articleWithEntity: ArticleWithItems) = Article(
         id = articleWithEntity.article.id,
         title = articleWithEntity.article.title,
         dateTime = articleWithEntity.article.dateTime,
@@ -19,7 +20,7 @@ object ArticleEntityMapper : Mapper<ArticleWithItems, Article> {
         changed = articleWithEntity.article.changed,
     )
 
-    override suspend fun fromModel(model: Article) =
+    override fun fromModel(model: Article) =
         ArticleWithItems(
             ArticleEntity(
                 id = model.id,
@@ -34,12 +35,12 @@ object ArticleEntityMapper : Mapper<ArticleWithItems, Article> {
             ItemEntityMapper.fromModelList(model.content)
         )
 
-    override suspend fun fromModelList(list: List<Article>): List<ArticleWithItems> =
+    override fun fromModelList(list: List<Article>): List<ArticleWithItems> =
         list.map {
             fromModel(it)
         }
 
-    override suspend fun toModelList(list: List<ArticleWithItems>): List<Article> = list.map {
+    override fun toModelList(list: List<ArticleWithItems>): List<Article> = list.map {
         toModel(it)
     }
 }

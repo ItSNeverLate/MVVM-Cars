@@ -2,7 +2,7 @@ package com.sevenpeakssoftware.mehdi.domain.useCase.articles
 
 import com.sevenpeakssoftware.mehdi.domain.model.Article
 import com.sevenpeakssoftware.mehdi.domain.repository.ArticleRepository
-import com.sevenpeakssoftware.mehdi.util.Resource
+import com.sevenpeakssoftware.mehdi.domain.util.Resource
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
