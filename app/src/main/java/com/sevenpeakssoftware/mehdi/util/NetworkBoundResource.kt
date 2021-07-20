@@ -1,5 +1,6 @@
 package com.sevenpeakssoftware.mehdi.util
 
+import android.util.Log
 import com.sevenpeakssoftware.mehdi.domain.util.Resource
 import kotlinx.coroutines.flow.*
 
@@ -10,7 +11,7 @@ inline fun <ResultType, RequestType> networkBoundResource(
     crossinline shouldFetch: (ResultType) -> Boolean = {
         // Database Refreshing policy
         true
-    }
+    },
 ) = flow {
     val data = query().first()
 

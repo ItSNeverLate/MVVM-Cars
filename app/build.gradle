@@ -19,7 +19,6 @@ android {
         multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-//        testInstrumentationRunner "com.sevenpeakssoftware.mehdi.MockRunner"
     }
 
     buildTypes {
@@ -38,6 +37,10 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    packagingOptions {
+        exclude 'META-INF/AL2.0'
+        exclude 'META-INF/LGPL2.1'
+    }
 }
 
 dependencies {
@@ -54,6 +57,10 @@ dependencies {
     // Mock Web Server
     implementation "com.squareup.okhttp3:okhttp:$okhttp3Version"
     androidTestImplementation "com.squareup.okhttp3:mockwebserver:$okhttp3Version"
+
+    // InstantTaskExecutorRule
+    testImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
+    androidTestImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
 
     //Assertion
     testImplementation "com.google.truth:truth:$truthVersion"
@@ -87,6 +94,8 @@ dependencies {
     // Coroutines
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:$coroutinesVersion"
 
     // Dagger Hilt
     implementation "com.google.dagger:hilt-android:$hiltVersion"
@@ -95,4 +104,7 @@ dependencies {
 
     // DataStore
     implementation "androidx.datastore:datastore-preferences:$dataStoreVersion"
+
+    // Mockito
+    testImplementation 'com.nhaarman:mockito-kotlin-kt1.1:1.5.0'
 }

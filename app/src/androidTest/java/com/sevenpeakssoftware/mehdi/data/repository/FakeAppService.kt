@@ -3,13 +3,11 @@ package com.sevenpeakssoftware.mehdi.data.repository
 import com.google.gson.Gson
 import com.sevenpeakssoftware.mehdi.data.remote.AppService
 import com.sevenpeakssoftware.mehdi.data.remote.response.ArticleResponse
-import kotlinx.coroutines.delay
 
 class FakeAppService : AppService {
-    val gson = Gson()
+    private val gson = Gson()
 
     override suspend fun getArticles(): ArticleResponse {
-        delay(2000)
         return gson.fromJson("{\n" +
                 "    \"status\": \"success\",\n" +
                 "    \"content\": [\n" +

@@ -27,11 +27,14 @@ class ArticleRepositoryImp constructor(
         saveFetchResult = { result ->
             db.withTransaction {
                 articleDao.deleteAllArticles()
+
                 val articles = ArticleDtoMapper.toModelList(result.content)
+
                 val entities = ArticleEntityMapper.fromModelList(articles)
                 for (entity in entities) {
                     articleDao.insert(entity.article, entity.items)
                 }
+
             }
         }
     )
