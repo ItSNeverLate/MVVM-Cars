@@ -7,12 +7,8 @@ import androidx.test.filters.SmallTest
 import com.google.common.truth.Truth.assertThat
 import com.sevenpeakssoftware.mehdi.data.local.AppDatabase
 import com.sevenpeakssoftware.mehdi.data.local.dao.ArticleDao
-import com.sevenpeakssoftware.mehdi.data.remote.AppService
 import com.sevenpeakssoftware.mehdi.domain.repository.ArticleRepository
 import com.sevenpeakssoftware.mehdi.util.JsonUtil
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.toList
-import kotlinx.coroutines.runBlocking
 import mockwebserver3.Dispatcher
 import mockwebserver3.MockResponse
 import mockwebserver3.MockWebServer
@@ -24,9 +20,9 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 @SmallTest
-class ArticleRepositoryImpTest{
+class ArticleRepositoryImpTest2{
 
-    private lateinit var fakeAppService: AppService
+    private lateinit var mockAppService: MockWebServer
     private lateinit var db: AppDatabase
     private lateinit var dao: ArticleDao
 
@@ -42,7 +38,15 @@ class ArticleRepositoryImpTest{
 
     @Before
     fun setup() {
-        fakeAppService = FakeAppService()
+        mockAppService = MockWebServer()
+        mockAppService.start(8080)
+//        mockAppService.dispatcher = dispatcher
+
+        val mockedResponse = MockResponse()
+        mockedResponse.setResponseCode(200)
+        mockedResponse.setBody(JsonUtil.getJsonFileContent( "resources/json/article/articles.json"))
+
+        mockAppService.enqueue(mockedResponse)
 
         db = Room.inMemoryDatabaseBuilder(
             ApplicationProvider.getApplicationContext(),
@@ -53,16 +57,17 @@ class ArticleRepositoryImpTest{
 
     @After
     fun teardown() {
+        mockAppService.shutdown()
+
         db.close()
     }
 
     @Test
-    fun getArticlesFromRemoteAndSaveIntoDB_returnsDataFromDB()= runBlocking {
-        val articleRepository = ArticleRepositoryImp(fakeAppService,db)
-        val result = articleRepository.getArticles().first()
+    fun getArticlesFromRemoteAndSaveIntoDB_returnsDataFromDB(){
+//        val api = mock()
+//        val articleRepository = ArticleRepositoryImp(mockAppService,db)
 
-        println(result)
-//        assertThat("1").isEqualTo("1")
+        assertThat("1").isEqualTo("1")
 //        mockAppService.takeRequest()
     }
 }
