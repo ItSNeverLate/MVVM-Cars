@@ -8,7 +8,7 @@ import com.sevenpeakssoftware.mehdi.data.local.entity.ArticleEntity
 import com.sevenpeakssoftware.mehdi.data.local.entity.ItemEntity
 
 @Database(entities = [ArticleEntity::class, ItemEntity::class], version = 1)
-@TypeConverters(Converters::class)
+@TypeConverters(Convertors::class)
 abstract class AppDatabase : RoomDatabase() {
 
     companion object {

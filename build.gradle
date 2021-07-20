@@ -16,8 +16,8 @@ buildscript {
         espressoVersion = '3.4.0'
         fragmentVersion = '1.4.0-alpha04'
         gradleVersion = '4.1.1'
-        hiltAndroidXVersion = '1.0.0-alpha03'
-        hiltVersion = "2.37"
+        hiltAndroidXVersion = '1.0.0'
+        hiltVersion = '2.38'
         junitVersion = '4.13.2'
         coreVersion = "1.7.0-alpha01"
         kotlinVersion = '1.5.21'
