@@ -1,6 +1,5 @@
 package com.sevenpeakssoftware.mehdi.util
 
-import android.util.Log
 import com.sevenpeakssoftware.mehdi.domain.util.Resource
 import kotlinx.coroutines.flow.*
 

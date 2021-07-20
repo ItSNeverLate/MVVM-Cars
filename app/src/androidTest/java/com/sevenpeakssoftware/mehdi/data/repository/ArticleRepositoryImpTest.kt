@@ -8,7 +8,6 @@ import androidx.test.filters.SmallTest
 import com.google.common.truth.Truth.assertThat
 import com.sevenpeakssoftware.mehdi.data.local.AppDatabase
 import com.sevenpeakssoftware.mehdi.data.remote.AppService
-import com.sevenpeakssoftware.mehdi.util.MainCoroutineRuleAndroidTest
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.last
 import kotlinx.coroutines.flow.take
@@ -28,8 +27,6 @@ class ArticleRepositoryImpTest {
     @get:Rule
     var instantTaskExecutorRule = InstantTaskExecutorRule()
 
-    @get:Rule
-    var mainCoroutineRule = MainCoroutineRuleAndroidTest()
 
     private lateinit var fakeAppService: AppService
     private lateinit var db: AppDatabase
@@ -53,12 +50,13 @@ class ArticleRepositoryImpTest {
     }
 
     @Test
-    fun getArticlesFromRemoteAndSaveIntoDB_returnsDataFromDB() = runBlocking {
+    fun getArticlesFromRemoteAndSaveIntoDB_returnsArticleListSize() = runBlocking {
         val articleRepository = ArticleRepositoryImp(fakeAppService, db)
+        val fakeAppServiceArticleListSize = fakeAppService.getArticles().content.size
         // take method makes an flow of { Loading, Success }
         // , and we will consume the Success, for we use last one
         val result = articleRepository.getArticles().take(2).last()
 
-        assertThat(result?.data?.size).isEqualTo(9)
+        assertThat(result.data?.size).isEqualTo(fakeAppServiceArticleListSize)
     }
 }

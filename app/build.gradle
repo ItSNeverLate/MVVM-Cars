@@ -54,9 +54,6 @@ dependencies {
     testImplementation "junit:junit:$junitVersion"
     androidTestImplementation "androidx.test.ext:junit:$testExtJunitVersion"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
-    // Mock Web Server
-    implementation "com.squareup.okhttp3:okhttp:$okhttp3Version"
-    androidTestImplementation "com.squareup.okhttp3:mockwebserver:$okhttp3Version"
 
     // InstantTaskExecutorRule
     testImplementation "androidx.arch.core:core-testing:$coreTestingVersion"
@@ -68,7 +65,7 @@ dependencies {
     // if needs to integrated (not integration test)
 
     // Glide
-    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
 
     // Fragment
     implementation "androidx.fragment:fragment-ktx:$fragmentVersion"
@@ -101,10 +98,4 @@ dependencies {
     implementation "com.google.dagger:hilt-android:$hiltVersion"
     kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
     kapt "androidx.hilt:hilt-compiler:$hiltAndroidXVersion"
-
-    // DataStore
-    implementation "androidx.datastore:datastore-preferences:$dataStoreVersion"
-
-    // Mockito
-    testImplementation 'com.nhaarman:mockito-kotlin-kt1.1:1.5.0'
 }

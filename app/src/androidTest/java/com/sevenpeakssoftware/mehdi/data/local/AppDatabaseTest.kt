@@ -6,7 +6,6 @@ import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.SmallTest
 import com.google.common.truth.Truth.assertThat
-import com.sevenpeakssoftware.mehdi.data.local.dao.ArticleDao
 import org.junit.After
 import org.junit.Before
 import org.junit.Test
@@ -17,7 +16,6 @@ import org.junit.runner.RunWith
 class AppDatabaseTest {
 
     private lateinit var db: AppDatabase
-    private lateinit var dao: ArticleDao
 
     @Before
     fun setup() {
@@ -25,7 +23,6 @@ class AppDatabaseTest {
             ApplicationProvider.getApplicationContext(),
             AppDatabase::class.java
         ).allowMainThreadQueries().build()
-        dao = db.articleDao()
     }
 
     @After
@@ -34,7 +31,7 @@ class AppDatabaseTest {
     }
 
     @Test
-    fun articleDaoInitialization() {
-        assertThat(dao).isInstanceOf(ArticleDao::class.java)
+    fun appDatabaseInstantiation() {
+        assertThat(db).isInstanceOf(AppDatabase::class.java)
     }
 }

@@ -1,8 +1,6 @@
 package com.sevenpeakssoftware.mehdi.util
 
-import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.platform.app.InstrumentationRegistry.getInstrumentation
-import java.io.File
 import java.io.IOException
 import java.io.InputStreamReader
 
